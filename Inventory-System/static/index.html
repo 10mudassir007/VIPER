@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#173d36" />
+    <title>Pharmacy inventory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="/" aria-label="Pharmacy inventory home">
+          <span class="brand-mark"><span></span><span></span><span></span></span>
+          <span data-app-name>Pharmacy inventory</span>
+        </a>
+        <p class="sidebar-kicker">Pharmacy operations</p>
+        <nav class="nav-list" aria-label="Primary navigation">
+          <a class="nav-item active" href="#locator"><span class="nav-icon">⌕</span>Medicine locator</a>
+          <a class="nav-item" href="#overview"><span class="nav-icon">◫</span>Inventory overview</a>
+        </nav>
+        <div class="sidebar-footer">
+          <div class="status-dot"><i></i><span>System connected</span></div>
+          <p>Supabase inventory<br />workspace</p>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Thursday, 08 October 2026</p>
+            <h1>Find it on the shelf.</h1>
+          </div>
+          <div class="topbar-badge"><span class="pulse"></span><span id="connection-label">Checking connection</span></div>
+        </header>
+
+        <section class="hero-panel" id="locator">
+          <div class="hero-copy">
+            <p class="section-label">Medicine locator</p>
+            <h2>Where is the prescription?</h2>
+            <p class="hero-description">Search by medicine, generic name, or brand. <span data-app-name>Pharmacy inventory</span> points you to the fastest available pick location.</p>
+          </div>
+          <form class="search-box" id="search-form">
+            <label for="medicine-search">Medicine name</label>
+            <div class="search-input-wrap">
+              <span class="search-symbol">⌕</span>
+              <input id="medicine-search" name="q" placeholder="Try “Amoxicillin”" autocomplete="off" required />
+              <button type="submit">Locate medicine</button>
+            </div>
+            <p class="search-hint">Press Enter to search the live inventory</p>
+          </form>
+        </section>
+
+        <section class="result-section" aria-live="polite">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">Location result</p>
+              <h2 id="result-title">Ready when you are</h2>
+            </div>
+            <span class="result-count" id="result-count"></span>
+          </div>
+          <div id="result-container" class="result-container">
+            <div class="empty-state">
+              <div class="empty-icon">⌖</div>
+              <h3>Search for a medicine</h3>
+              <p>The best rack, shelf, and bin will appear here.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="overview-section" id="overview">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">At a glance</p>
+              <h2>Inventory pulse</h2>
+            </div>
+            <button class="text-button" id="refresh-summary" type="button">Refresh data <span>↻</span></button>
+          </div>
+          <div class="stats-grid">
+            <article class="stat-card stat-card-primary"><span class="stat-label">Medicines tracked</span><strong id="stat-medicines">—</strong><span class="stat-foot">Distinct catalogue items</span></article>
+            <article class="stat-card"><span class="stat-label">Available units</span><strong id="stat-units">—</strong><span class="stat-foot">Ready to pick now</span></article>
+            <article class="stat-card stat-card-warning"><span class="stat-label">Low stock alerts</span><strong id="stat-low">—</strong><span class="stat-foot">Locations need attention</span></article>
+          </div>
+        </section>
+        <footer><span>© <span data-app-name>Pharmacy inventory</span> desk</span><span>Built for calm, accurate picking</span></footer>
+      </main>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>
